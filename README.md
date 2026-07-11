@@ -142,13 +142,28 @@ Resolves via [`kotoba-lang/industry`](https://github.com/kotoba-lang/industry)
 ## Jurisdiction coverage (honest)
 
 `realty.facts/coverage` reports how many requested jurisdictions actually
-have an official spec-basis in `realty.facts/catalog` -- currently 5
-seeded (JPN, USA-CA, GBR, DEU, AUS-NSW) out of ~194 jurisdictions
+have an official spec-basis in `realty.facts/catalog` -- currently 6
+seeded (JPN, USA-CA, GBR, DEU, NLD, AUS-NSW) out of ~194 jurisdictions
 worldwide. This is a starting catalog to prove the governor contract
 end-to-end, not a claim of global coverage. Adding a jurisdiction is
 additive: one map entry in `realty.facts/catalog`, citing a real official
 source -- never fabricate a jurisdiction's requirements to make coverage
 look bigger.
+
+### Netherlands closing profile
+
+`NLD` is an implemented jurisdiction profile for owner-operated sale
+preparation. It covers the Kadaster title/mortgage/attachment search,
+written purchase agreement and consumer cooling-off evidence, notarial
+deed draft, Wwft/UBO evidence, mortgage discharge, energy label, and
+conditional VvE, erfpacht and tenancy packages. A conditional item needs
+the real document or a human-verified not-applicable declaration; the LLM
+may not silently omit it.
+
+The broker is optional, but this actor never substitutes for the Dutch
+`notaris`: deed approval/signing, Kadaster submission/registration and
+release of sale proceeds remain explicit human gates. See
+[`docs/nld-operator-guide.md`](docs/nld-operator-guide.md) and ADR-0002.
 
 ## License
 

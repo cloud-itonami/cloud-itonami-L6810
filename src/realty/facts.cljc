@@ -59,6 +59,33 @@
                           "Grundbuchauszug (land register extract)"
                           "Auflassungsvormerkung (priority notice of conveyance)"
                           "Identification of parties"]}
+   "NLD" {:name "Netherlands"
+          :owner-authority "Kadaster (Basisregistratie Kadaster / openbare registers)"
+          :legal-basis "Burgerlijk Wetboek Boek 3 art. 89 (notarial deed and registration); Burgerlijk Wetboek Boek 7 art. 2 (written residential sale and consumer cooling-off period); Wwft"
+          :national-spec "Akte van levering, submitted by a Dutch civil-law notary to Kadaster"
+          :provenance "https://www.kadaster.nl/situaties/regelen-via-de-notaris/akte-inschrijven-bij-koop-van-een-huis"
+          :official-sources
+          {:transfer-law "https://wetten.overheid.nl/BWBR0005291/"
+           :residential-sale-law "https://wetten.overheid.nl/BWBR0005290/"
+           :registration-process "https://www.kadaster.nl/situaties/regelen-via-de-notaris/akte-inschrijven-bij-koop-van-een-huis"
+           :energy-label "https://www.rvo.nl/onderwerpen/wetten-en-regels-gebouwen/energielabel-woningen"
+           :aml-notary "https://www.knb.nl/ons-beroep/toezicht-tuchtrecht/wet-en-regelgeving/wwft"}
+          :actuation-authority "A Netherlands civil-law notary (notaris); Kadaster registration completes legal transfer"
+          :human-gates #{:notary-approved :deed-signed :kadaster-registered :funds-released-by-notary}
+          :notes "The broker is optional. The actor may prepare and verify a closing package, but may not execute the notarial deed, submit it to Kadaster, or release funds. Conditional property evidence is satisfied by the applicable document or an explicit, human-verified not-applicable declaration."
+          :required-docs
+          ["Kadaster title/parcel extract and seller ownership verification"
+           "Kadaster mortgage, attachment and limited-rights search"
+           "Signed written purchase agreement (koopovereenkomst), with cooling-off receipt/timeline where BW 7:2 applies"
+           "Notary-approved draft deed of transfer (concept akte van levering)"
+           "Notary client/party identity, authority, UBO and Wwft review evidence"
+           "Mortgage redemption/discharge statement, or human-verified not-applicable declaration"
+           "Valid EP-online energy-performance label and advertisement/hand-over evidence, or documented statutory exemption"
+           "VvE division deed, regulations, financial/reserve, minutes and arrears package, or human-verified not-applicable declaration"
+           "Erfpacht/opstal/servitude terms and current canon evidence, or human-verified not-applicable declaration"
+           "Occupancy and tenancy status, lease documents and tenant-impact review, or human-verified vacant-possession declaration"
+           "Municipal permit, destination/environment-plan and known-defect disclosure package"
+           "Notary closing statement and funds-flow instructions"]}
    "AUS-NSW" {:name "Australia -- New South Wales (exemplar; federalism note below)"
               :owner-authority "NSW Land Registry Services"
               :legal-basis "Real Property Act 1900 (NSW) -- Torrens title"
@@ -104,3 +131,9 @@
 
 (defn doc-checklist [iso3]
   (:required-docs (spec-basis iso3) []))
+
+(defn actuation-authority [iso3]
+  (:actuation-authority (spec-basis iso3)))
+
+(defn human-gates [iso3]
+  (:human-gates (spec-basis iso3) #{}))
